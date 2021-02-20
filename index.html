@@ -51,11 +51,11 @@
 
 				<div class="input-group 
 							input-group-lg">
-					<input 
+					<textarea
 						type="text" 
 						class="form-control mt-4" 
 						placeholder="Escreva algo ..."
-					>	
+					></textarea>	
 				</div>
 				
 			</div>
@@ -68,11 +68,17 @@
 
 		const reprod = () => {
 			const texto = $('.form-control').value;
-			const utter = new SpeechSynthesisUtterance(texto);
-			const voices = new SpeechSynthesis.getVoices();
+
+			const synth = window.speechSynthesis; 
+			const voices = synth.getVoices();
 			
-			voices.lang = 'pt-br'
-			console.log(voices)
+			voices.leng = 'pt-br';
+			
+			const text = $('.form-control').value;
+			const utterThis = new SpeechSynthesisUtterance(text);
+
+			synth.speak(utterThis)
+			// console.log(voices)
 		}
 
 		$('.btn-dark').addEventListener('click', reprod)
