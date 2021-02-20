@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Voice</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+		
+		<style type="text/css">
+			.container {
+				width: 100%;
+				height: 100vh;
+			}
+
+			.btn-dark {
+				width: 100px;
+				height: 100px;
+				font-size: 3rem;
+				border-radius: 100px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		
+		<div class="container
+					d-flex
+					flex-column
+					justify-content-center
+					align-items-center">
+
+			<div class="content 
+						mt-4 
+						d-flex 
+						flex-column 
+						justify-content-center
+						align-items-center 
+						card
+						shadow 
+						p-4
+						rounded-lg">
+
+				<button class="btn 
+							   btn-dark 
+							   mt-4 
+							   shadow">
+					<span class="fa fa-microphone"></span>
+				</button>
+
+				<div class="input-group 
+							input-group-lg">
+					<input 
+						type="text" 
+						class="form-control mt-4" 
+						placeholder="Escreva algo ..."
+					>	
+				</div>
+				
+			</div>
+		</div>
+
+	</body>
+
+	<script type="text/javascript">
+		const $ = e => document.querySelector(e);
+
+		const reprod = () => {
+			const texto = $('.form-control').value;
+			const utter = new SpeechSynthesisUtterance(texto);
+			const voices = new SpeechSynthesis.getVoices();
+			
+			voices.lang = 'pt-br'
+			console.log(voices)
+		}
+
+		$('.btn-dark').addEventListener('click', reprod)
+	</script>
+</html>
